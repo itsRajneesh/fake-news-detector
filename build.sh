@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Force use of correct Python version & pip instead of Poetry
+# Force pip install and bypass Poetry completely
 python -m venv venv
 source venv/bin/activate
+pip install --upgrade pip
 pip install -r requirements.txt
