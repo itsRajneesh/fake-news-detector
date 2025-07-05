@@ -1,7 +1,6 @@
 services:
   - type: web
     name: fake-news-detector
-    env: python
-    buildCommand: ./build.sh
-    startCommand: gunicorn backend.app:app
-    runtime: python
+    env: docker
+    plan: free
+    autoDeploy: true
