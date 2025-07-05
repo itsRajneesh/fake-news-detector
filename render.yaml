@@ -3,5 +3,5 @@ services:
     name: fake-news-detector
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app
+    startCommand: gunicorn backend.app:app
     plan: free
