@@ -3,7 +3,8 @@
 from flask import Flask, request, render_template, after_this_request
 import pickle
 import requests
-from utils import clean_text  # Make sure utils.py is in the backend folder
+from backend.utils import clean_text
+  # Make sure utils.py is in the backend folder
 
 app = Flask(__name__,
             template_folder="../frontend/templates",
