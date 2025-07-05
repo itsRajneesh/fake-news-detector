@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fake News Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Input Form Section -->
+        <div class="card input-card">
+            <h2>News Verification</h2>
+            <p><strong>Input form to enter news text</strong></p>
+            <form action="/" method="post"> <!-- ✅ FIXED -->
+                <textarea name="news" placeholder="Enter news text here" required></textarea>
+                {% if prediction %}
+                    <div class="output">
+                        Output: <span class="{{ prediction }}">{{ prediction.capitalize() }}</span>
+                    </div>
+                {% endif %}
+                <button class="btn primary" type="submit">Submit</button>
+            </form>
+        </div>
+
+        <!-- Real-time News Section -->
+        <div class="card news-card">
+            <div class="header">
+                <h3>Real-time News Feed</h3>
+                <form action="/" method="get" class="inline-form">
+                    <button class="btn refresh" type="submit">⟳ Refresh</button>
+                </form>
+            </div>
+            <ul class="news-feed">
+                {% for headline in headlines %}
+                    <li>
+                        <a href="{{ headline.url }}" target="_blank">{{ headline.title }}</a>
+                        <span class="tag {{ headline.prediction }}">{{ headline.prediction }}</span>
+                    </li>
+                {% else %}
+                    <li>No news found.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
