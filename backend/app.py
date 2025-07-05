@@ -4,15 +4,18 @@ from flask import Flask, request, render_template, after_this_request
 import pickle
 import requests
 from backend.utils import clean_text
-  # Make sure utils.py is in the backend folder
+import os
 
+# Load ML model and vectorizer
+model = pickle.load(open(os.path.join(os.path.dirname(__file__), "model.pkl"), "rb"))
+vectorizer = pickle.load(open(os.path.join(os.path.dirname(__file__), "vectorizer.pkl"), "rb"))
+
+# Make sure utils.py is in the backend folder
 app = Flask(__name__,
             template_folder="../frontend/templates",
             static_folder="../frontend/static")
 
-# Load ML model and vectorizer
-model = pickle.load(open("model.pkl", "rb"))
-vectorizer = pickle.load(open("vectorizer.pkl", "rb"))
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():

@@ -4,4 +4,6 @@ services:
     env: python
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn backend.app:app
-    plan: free
+    envVars:
+      - key: PORT
+        value: 10000

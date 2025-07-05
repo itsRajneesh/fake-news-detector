@@ -1,6 +1,12 @@
-# utils.py
+# backend/utils.py
+
 import re
 import string
+import nltk
+
+# Download required NLTK resources at runtime
+nltk.download('stopwords', quiet=True)
+
 from nltk.corpus import stopwords
 
 stop_words = set(stopwords.words("english"))
